@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Models\DTOs\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 
