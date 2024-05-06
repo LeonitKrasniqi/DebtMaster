@@ -1,4 +1,5 @@
 using DebtMaster.Data;
+using DebtMaster.Mappings;
 using DebtMaster.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,8 @@ builder.Services.AddDbContext<DebtDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DebtConnectionString")));
 
 builder.Services.AddScoped<IDebtRepository, DebtRepository>();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
