@@ -1,4 +1,5 @@
-﻿using DebtMaster.Data;
+﻿using AutoMapper;
+using DebtMaster.Data;
 using DebtMaster.Models.Domain;
 using DebtMaster.Models.DTOs;
 using DebtMaster.Repositories;
@@ -13,11 +14,13 @@ namespace DebtMaster.Controllers
     {
         private readonly IDebtRepository debtRepository;
         private readonly DebtDbContext dbContext;
+        private readonly IMapper mapper;
 
-        public DebtController(IDebtRepository debtRepository, DebtDbContext dbContext)
+        public DebtController(IDebtRepository debtRepository, DebtDbContext dbContext, IMapper mapper)
         {
             this.dbContext = dbContext;
             this.debtRepository = debtRepository;
+            this.mapper = mapper;
 
         }
 
@@ -26,22 +29,17 @@ namespace DebtMaster.Controllers
         {
             try
             {
-                Debt debt = new Debt
-                {
-                    DebtorName = debtDto.DebtorName,
-                    Description = debtDto.Description,
-                    DateTime = debtDto.DateTime,
-                    Amount = debtDto.Amount
-                };
-
+                Debt debt = mapper.Map<Debt>(debtDto);
+                debt.DebtorId = Guid.NewGuid();
                 Debt createdDebt = await debtRepository.CreateAsync(debt);
+
                 return Ok(createdDebt);
             }
             catch(Exception ex) {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Failed to create debt: " + ex.Message);
             
             }
-  }
+         }
 
     }
 }
