@@ -1,4 +1,5 @@
 using DebtMaster.Data;
+using DebtMaster.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DebtDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DebtConnectionString")));
 
+builder.Services.AddScoped<IDebtRepository, DebtRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
