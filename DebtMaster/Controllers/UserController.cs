@@ -45,7 +45,7 @@ namespace DebtMaster.Controllers
             
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:Guid}")]
         public async Task<IActionResult> GetUserById(Guid id)
         {
             try
@@ -63,6 +63,71 @@ namespace DebtMaster.Controllers
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while fetching the user.");
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            try
+            {
+                var users = await userRepository.GetAllAsync();
+
+                var userDtos = mapper.Map<List<UserDto>>(users);
+                return Ok(userDtos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while fetching users.");
+            }
+        }
+        [HttpPut("{id:Guid}")]
+        public async Task<IActionResult> UpdateUser(Guid id, [FromBody] UpdateUserDto dto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var existingUser = await userRepository.GetByIdAsync(id);
+                if (existingUser == null)
+                {
+                    return NotFound("User not found");
+                }
+
+                
+                existingUser.Name = dto.Name;
+
+                await userRepository.UpdateAsync(existingUser);
+
+                return Ok("Name updated");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while updating the user.");
+            }
+        }
+
+
+        [HttpDelete("{id:Guid}")]
+        public async Task<IActionResult> DeleteUser(Guid id)
+        {
+            try
+            {
+                var result = await userRepository.DeleteAsync(id);
+
+                if (!result)
+                {
+                    return NotFound("User not found");
+                }
+
+                return Ok("User deleted successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while deleting the user.");
             }
         }
 
