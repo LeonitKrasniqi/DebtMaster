@@ -11,10 +11,18 @@ namespace DebtMaster.Data
         }
 
         public DbSet<Debt> Debts { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-             
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Debt>()
+                 .HasOne(d => d.User)
+                 .WithMany(u => u.Debts)
+                 .HasForeignKey(d => d.UserId)
+                 .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }
