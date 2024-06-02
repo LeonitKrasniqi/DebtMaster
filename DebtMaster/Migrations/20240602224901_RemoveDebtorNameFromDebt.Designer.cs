@@ -4,6 +4,7 @@ using DebtMaster.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DebtMaster.Migrations
 {
     [DbContext(typeof(DebtDbContext))]
-    partial class DebtDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240602224901_RemoveDebtorNameFromDebt")]
+    partial class RemoveDebtorNameFromDebt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

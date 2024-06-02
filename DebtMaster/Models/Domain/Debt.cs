@@ -7,7 +7,6 @@ namespace DebtMaster.Models.Domain
     {
         [Key]
         public Guid DebtId { get; set; }
-        public string DebtorName { get; set; }
         public string Description { get; set; }
         public DateTime DateTime { get; set; }
         public decimal Amount {  get; set; }
