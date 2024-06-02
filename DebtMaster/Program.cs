@@ -17,6 +17,7 @@ builder.Services.AddDbContext<DebtDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DebtConnectionString")));
 
 builder.Services.AddScoped<IDebtRepository, DebtRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 var app = builder.Build();
