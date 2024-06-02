@@ -9,6 +9,8 @@ namespace DebtMaster.Mappings
         public AutoMapperProfiles()
         {
             CreateMap<Debt, AddDebtRequestDto>().ReverseMap();
+            CreateMap<User, CreateUserDto>().ReverseMap();  
+            CreateMap<User,UserDto>().ReverseMap();
             
         }
     }
