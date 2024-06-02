@@ -14,6 +14,7 @@ namespace DebtMaster.Controllers
     {
         private readonly IDebtRepository debtRepository;
         private readonly DebtDbContext dbContext;
+        private readonly IUserRepository userRepository;
         private readonly IMapper mapper;
 
         public DebtController(IDebtRepository debtRepository, DebtDbContext dbContext, IMapper mapper)
@@ -25,6 +26,27 @@ namespace DebtMaster.Controllers
         }
 
      
+        [HttpPost]
+        public async Task<IActionResult> AddDebt([FromBody] AddDebtRequestDto addDebtRequestDto)
+        {
+            try
+            {
+
+                var debt = mapper.Map<Debt>(addDebtRequestDto);
+
+
+                var createdDebt = await debtRepository.CreateAsync(debt);
+
+
+                return Ok(createdDebt);
+            }
+            catch (ArgumentException ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+          
+        }
 
     }
 }

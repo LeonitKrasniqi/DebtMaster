@@ -1,5 +1,6 @@
 ﻿using DebtMaster.Data;
 using DebtMaster.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace DebtMaster.Repositories
 {
@@ -14,6 +15,13 @@ namespace DebtMaster.Repositories
 
         public async Task<Debt> CreateAsync(Debt debt)
         {
+
+            var user = await dbContext.Users.FirstOrDefaultAsync(u => u.UserID == debt.UserId);
+            if (user == null)
+            {
+             
+                throw new ArgumentException("User with the provided ID does not exist.");
+            }
             await dbContext.Debts.AddAsync(debt);   
             await dbContext.SaveChangesAsync();
             return debt;
