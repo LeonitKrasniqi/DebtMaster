@@ -24,22 +24,7 @@ namespace DebtMaster.Controllers
 
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateDebt([FromBody] AddDebtRequestDto debtDto)
-        {
-            try
-            {
-                Debt debt = mapper.Map<Debt>(debtDto);
-                debt.DebtorId = Guid.NewGuid();
-                Debt createdDebt = await debtRepository.CreateAsync(debt);
-
-                return Ok(createdDebt);
-            }
-            catch(Exception ex) {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Failed to create debt: " + ex.Message);
-            
-            }
-         }
+     
 
     }
 }
