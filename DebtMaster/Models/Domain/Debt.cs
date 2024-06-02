@@ -12,7 +12,6 @@ namespace DebtMaster.Models.Domain
         public DateTime DateTime { get; set; }
         public decimal Amount {  get; set; }
 
-        [ForeignKey("User")]
         public Guid UserId {  get; set; }
         public User User { get; set; }
 

@@ -23,6 +23,10 @@ namespace DebtMaster.Data
                  .HasForeignKey(d => d.UserId)
                  .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Debt>()
+               .Property(d => d.Amount)
+               .HasColumnType("decimal(18,2)");
+
         }
     }
 }
