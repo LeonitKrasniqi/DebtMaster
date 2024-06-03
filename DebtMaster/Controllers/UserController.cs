@@ -9,17 +9,10 @@ namespace DebtMaster.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController(IUserRepository userRepository, IMapper mapper) : ControllerBase
     {
-        private readonly IUserRepository userRepository;
-        private readonly IMapper mapper;
-
-        public UserController(IUserRepository userRepository, IMapper mapper)
-        {
-            this.mapper= mapper;
-            this.userRepository= userRepository;    
-        }
-
+        private readonly IUserRepository userRepository = userRepository;
+        private readonly IMapper mapper = mapper;
 
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserDto dto)

@@ -10,22 +10,11 @@ namespace DebtMaster.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DebtController : ControllerBase
+    public class DebtController(IDebtRepository debtRepository, IMapper mapper) : ControllerBase
     {
-        private readonly IDebtRepository debtRepository;
-        private readonly DebtDbContext dbContext;
-        private readonly IUserRepository userRepository;
-        private readonly IMapper mapper;
+        private readonly IDebtRepository debtRepository = debtRepository;
+        private readonly IMapper mapper = mapper;
 
-        public DebtController(IDebtRepository debtRepository, DebtDbContext dbContext, IMapper mapper)
-        {
-            this.dbContext = dbContext;
-            this.debtRepository = debtRepository;
-            this.mapper = mapper;
-
-        }
-
-     
         [HttpPost]
         public async Task<IActionResult> AddDebt([FromBody] AddDebtRequestDto addDebtRequestDto)
         {
