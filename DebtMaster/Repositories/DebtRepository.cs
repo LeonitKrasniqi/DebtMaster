@@ -27,19 +27,10 @@ namespace DebtMaster.Repositories
             return debt;
         }
 
-        public Task<Debt> DeleteAsync(Guid debtorId)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<List<Debt>> GetAllAsync()
+        public async Task<List<Debt>> GetAllAsync()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Debt> GetByIdAsync(Guid debtorId)
-        {
-            throw new NotImplementedException();
+            return await dbContext.Debts.ToListAsync();
         }
     }
 }

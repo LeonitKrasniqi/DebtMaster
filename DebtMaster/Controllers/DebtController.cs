@@ -48,5 +48,22 @@ namespace DebtMaster.Controllers
           
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetDebts()
+        {
+            try
+            {
+                var debts = await debtRepository.GetAllAsync();
+                var debtDtos = mapper.Map<List<DebtDto>>(debts);
+
+                return Ok(debtDtos);
+
+            }
+            catch(ArgumentException ex)
+            {
+                return BadRequest($"Could not find {ex.Message}");
+            }
+        }
+
     }
 }
