@@ -32,5 +32,12 @@ namespace DebtMaster.Repositories
         {
             return await dbContext.Debts.ToListAsync();
         }
+
+        public async Task<List<Debt>> GetDebtsByUserIdAsync(Guid UserId)
+        {
+            return await dbContext.Debts
+                            .Where(d => d.UserId == UserId)
+                            .ToListAsync();
+        }
     }
 }

@@ -6,5 +6,7 @@ namespace DebtMaster.Repositories
     {
         Task<Debt> CreateAsync(Debt debt);
         Task<List<Debt>> GetAllAsync();
+
+        Task<List<Debt>> GetDebtsByUserIdAsync(Guid UserId);
     }
 }

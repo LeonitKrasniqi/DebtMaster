@@ -12,6 +12,7 @@ namespace DebtMaster.Mappings
             CreateMap<User, CreateUserDto>().ReverseMap();  
             CreateMap<User,UserDto>().ReverseMap();
             CreateMap<Debt,DebtDto>().ReverseMap();
+            CreateMap<Debt, UserDebtDto>().ReverseMap();
         }
     }
 }

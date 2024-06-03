@@ -54,5 +54,20 @@ namespace DebtMaster.Controllers
             }
         }
 
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetDebtsByUserId(Guid userId)
+        {
+            try
+            {
+                var debts = await debtRepository.GetDebtsByUserIdAsync(userId);
+                var debtDtos = mapper.Map<List<UserDebtDto>>(debts);
+                return Ok(debtDtos);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest($"Could not find debts for user {userId}: {ex.Message}");
+            }
+        }
+
     }
 }
