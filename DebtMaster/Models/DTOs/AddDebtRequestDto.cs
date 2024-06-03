@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.VisualBasic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DebtMaster.Models.DTOs
 {
@@ -6,6 +7,8 @@ namespace DebtMaster.Models.DTOs
     {
         [Required]
         public string Description { get; set; }
+        [Required]
+        public DateTime DateTime { get; set; }
         [Required]
         public decimal Amount { get; set; }
         [Required]
