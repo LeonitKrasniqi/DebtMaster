@@ -1,4 +1,5 @@
 ﻿using DebtMaster.Models.Domain;
+using DebtMaster.Models.DTOs;
 
 namespace DebtMaster.Repositories
 {
@@ -8,5 +9,6 @@ namespace DebtMaster.Repositories
         Task<List<Debt>> GetAllAsync();
 
         Task<List<Debt>> GetDebtsByUserIdAsync(Guid UserId);
+        Task<UserDebtAmountDto> GetTotalAmountByUserIdAsync(Guid UserId);
     }
 }

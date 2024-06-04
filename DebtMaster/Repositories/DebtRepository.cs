@@ -1,5 +1,6 @@
 ﻿using DebtMaster.Data;
 using DebtMaster.Models.Domain;
+using DebtMaster.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace DebtMaster.Repositories
@@ -38,6 +39,27 @@ namespace DebtMaster.Repositories
             return await dbContext.Debts
                             .Where(d => d.UserId == UserId)
                             .ToListAsync();
+        }
+
+        public async Task<UserDebtAmountDto> GetTotalAmountByUserIdAsync(Guid UserId)
+        {
+            var user = await dbContext.Users
+            .Include(u => u.Debts)
+            .FirstOrDefaultAsync(u => u.UserID == UserId);
+
+            if (user == null)
+            {
+                throw new KeyNotFoundException("User not found");
+            }
+
+            var totalAmount = user.Debts.Sum(d => d.Amount);
+
+            return new UserDebtAmountDto
+            {
+                UserId = user.UserID,
+                Name = user.Name,
+                TotalAmount = totalAmount
+            };
         }
     }
 }

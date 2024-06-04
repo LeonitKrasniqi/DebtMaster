@@ -69,5 +69,19 @@ namespace DebtMaster.Controllers
             }
         }
 
+        [HttpGet("{UserId}")]
+        public async Task<ActionResult<UserDebtAmountDto>> GetTotalDebt(Guid UserId)
+        {
+            try
+            {
+                var result = await debtRepository.GetTotalAmountByUserIdAsync(UserId);
+                return Ok(result);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
     }
 }
