@@ -63,9 +63,9 @@ namespace DebtMaster.Controllers
                 var debtDtos = mapper.Map<List<UserDebtDto>>(debts);
                 return Ok(debtDtos);
             }
-            catch (ArgumentException ex)
+            catch (KeyNotFoundException)
             {
-                return BadRequest($"Could not find debts for user {userId}: {ex.Message}");
+               return NotFound();
             }
         }
 

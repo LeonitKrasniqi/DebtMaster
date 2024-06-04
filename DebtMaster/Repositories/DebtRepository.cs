@@ -36,6 +36,13 @@ namespace DebtMaster.Repositories
 
         public async Task<List<Debt>> GetDebtsByUserIdAsync(Guid UserId)
         {
+            var userExists = await dbContext.Users.AnyAsync(u => u.UserID == UserId);
+
+            if (!userExists)
+            {
+                throw new KeyNotFoundException("User not found");
+            }
+
             return await dbContext.Debts
                             .Where(d => d.UserId == UserId)
                             .ToListAsync();
