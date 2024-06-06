@@ -1,5 +1,5 @@
 # DebtMasterAPI
-A monolithic web API built with .NET 8.0 for efficient debt management. It uses MS SQL for data storage, providing endpoints for recording debts, tracking payments, managing user accounts and checking debts.
+A monolithic web API built with .NET 8.0 for efficient debt management. It uses MS SQL for data storage, providing endpoints for recording debts, tracking payments, managing user accounts and checking debts. As an admin, you can create accounts and maintain records for each accounts debts and payments. As a user, you can view the debts, transactions, and activity in your personal account.
 
 ## Role-Based Access Control
 
