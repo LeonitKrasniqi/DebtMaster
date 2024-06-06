@@ -12,13 +12,21 @@ The access token provided upon successful authentication is valid for 5 days. Af
 Admins have access to all methods:
 
 CreateUser
+
 GetUserById
+
 GetAllUsers
+
 UpdateUser
+
 DeleteUser
+
 AddDebt
+
 GetDebts
+
 GetDebtsByUserId
+
 GetTotalDebt
 
 ### User
@@ -26,6 +34,9 @@ GetTotalDebt
 Users have access to the following methods:
 
 GetDebtsByUserId
+
 GetTotalDebt
+
 GetUserById
+
 All these User methods are accessed using a token and GUID.
