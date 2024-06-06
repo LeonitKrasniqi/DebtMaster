@@ -7,8 +7,8 @@ A monolithic web API built with .NET 8.0 for efficient debt management. It uses 
 
 The access token provided upon successful authentication is valid for 5 days. After this period, users will need to re-authenticate to obtain a new token.
 
-### Usage
-#### Admin Access
+## Usage
+### Admin Access
 Admins have access to all methods:
 
 CreateUser
@@ -29,7 +29,7 @@ GetDebtsByUserId
 
 GetTotalDebt
 
-#### User Access
+### User Access
 Users have access to the following methods:
 
 GetDebtsByUserId
