@@ -1,6 +1,10 @@
 # DebtMasterAPI
 A monolithic web API built with .NET 8.0 for efficient debt management. It uses MS SQL for data storage, providing endpoints for recording debts, tracking payments, managing user accounts and checking debts. As an admin, you can create accounts and maintain records for each accounts debts and payments. As a user, you can view the debts, transactions, and activity in your personal account.
 
+# How entities interact
+![DebtMasterDb](https://github.com/LeonitKrasniqi/DebtMaster/assets/102996903/e407e33d-15c1-4f49-b8dd-388aad157999)
+
+
 # How Swagger looks
 ![DebtMasterPic](https://github.com/LeonitKrasniqi/DebtMaster/assets/102996903/ac8137b3-6fa5-4878-9e9a-1739adb5a1e2)
 
