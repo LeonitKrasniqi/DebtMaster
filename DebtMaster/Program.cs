@@ -16,6 +16,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DebtDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DebtConnectionString")));
 
+builder.Services.AddDbContext<DebtAuthDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DebtAuthConnectionString")));
+
 builder.Services.AddScoped<IDebtRepository, DebtRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
