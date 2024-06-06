@@ -54,3 +54,9 @@ All these User methods are accessed using a token and GUID.
 - **Microsoft.IdentityModel.Tokens** - version 7.4.0
 - **Swashbuckle.AspNetCore** - version 6.4.0
 - **System.IdentityModel.Tokens.Jwt** - version 7.4.0
+
+## Local Host Ports
+
+The application is hosted in the following local host port:
+
+- HTTPS: https://localhost:7185
