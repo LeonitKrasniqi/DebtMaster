@@ -11,32 +11,32 @@ The access token provided upon successful authentication is valid for 5 days. Af
 ### Admin Access
 Admins have access to all methods:
 
-CreateUser
+**CreateUser**
 
-GetUserById
+**GetUserById**
 
-GetAllUsers
+**GetAllUsers**
 
-UpdateUser
+**UpdateUser**
 
-DeleteUser
+**DeleteUser**
 
-AddDebt
+**AddDebt**
 
-GetDebts
+**GetDebts**
 
-GetDebtsByUserId
+**GetDebtsByUserId**
 
-GetTotalDebt
+**GetTotalDebt**
 
 ### User Access
 Users have access to the following methods:
 
-GetDebtsByUserId
+**GetDebtsByUserId**
 
-GetTotalDebt
+**GetTotalDebt**
 
-GetUserById
+**GetUserById**
 
 All these User methods are accessed using a token and GUID.
 
