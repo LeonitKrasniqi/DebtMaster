@@ -39,3 +39,18 @@ GetTotalDebt
 GetUserById
 
 All these User methods are accessed using a token and GUID.
+
+
+
+## Package References
+
+- **AutoMapper** - version 13.0.1
+- **AutoMapper.Extensions.Microsoft.DependencyInjection** - version 13.0.1
+- **Microsoft.AspNetCore.Authentication.JwtBearer** - version 8.0.6
+- **Microsoft.AspNetCore.Identity.EntityFrameworkCore** - version 8.0.4
+- **Microsoft.AspNetCore.OpenApi** - version 8.0.4
+- **Microsoft.EntityFrameworkCore.SqlServer** - version 8.0.4
+- **Microsoft.EntityFrameworkCore.Tools** - version 8.0.4
+- **Microsoft.IdentityModel.Tokens** - version 7.4.0
+- **Swashbuckle.AspNetCore** - version 6.4.0
+- **System.IdentityModel.Tokens.Jwt** - version 7.4.0
