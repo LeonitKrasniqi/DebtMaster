@@ -10,7 +10,7 @@ namespace DebtMaster.Migrations.DebtAuthDb
     /// <inheritdoc />
     public partial class AddAuthDbMigration : Migration
     {
-        /// <inheritdoc />
+        /// <inheritdoc /> 
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
