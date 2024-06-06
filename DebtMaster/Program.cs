@@ -21,6 +21,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DebtAuthConnecti
 
 builder.Services.AddScoped<IDebtRepository, DebtRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 var app = builder.Build();
