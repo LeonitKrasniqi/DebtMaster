@@ -3,6 +3,7 @@ using DebtMaster.Data;
 using DebtMaster.Models.Domain;
 using DebtMaster.Models.DTOs;
 using DebtMaster.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,7 @@ namespace DebtMaster.Controllers
         private readonly IMapper mapper = mapper;
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddDebt([FromBody] AddDebtRequestDto addDebtRequestDto)
         {
             try
@@ -38,6 +40,7 @@ namespace DebtMaster.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDebts()
         {
             try
@@ -55,6 +58,7 @@ namespace DebtMaster.Controllers
         }
 
         [HttpGet("user/{userId}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetDebtsByUserId(Guid userId)
         {
             try
@@ -70,6 +74,7 @@ namespace DebtMaster.Controllers
         }
 
         [HttpGet("{UserId}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult<UserDebtAmountDto>> GetTotalDebt(Guid UserId)
         {
             try

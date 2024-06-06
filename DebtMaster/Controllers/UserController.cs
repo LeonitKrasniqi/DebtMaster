@@ -2,6 +2,7 @@
 using DebtMaster.Models.Domain;
 using DebtMaster.Models.DTOs;
 using DebtMaster.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,7 @@ namespace DebtMaster.Controllers
         private readonly IMapper mapper = mapper;
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserDto dto)
         {
             try
@@ -39,6 +41,7 @@ namespace DebtMaster.Controllers
         }
 
         [HttpGet("{id:Guid}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetUserById(Guid id)
         {
             try
@@ -60,6 +63,7 @@ namespace DebtMaster.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllUsers()
         {
             try
@@ -75,6 +79,7 @@ namespace DebtMaster.Controllers
             }
         }
         [HttpPut("{id:Guid}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateUser(Guid id, [FromBody] UpdateUserDto dto)
         {
             try
@@ -105,6 +110,7 @@ namespace DebtMaster.Controllers
 
 
         [HttpDelete("{id:Guid}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
             try
