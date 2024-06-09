@@ -5,8 +5,8 @@ A monolithic web API built with .NET 8.0 for efficient debt management. It uses 
 ![DebtMasterDb](https://github.com/LeonitKrasniqi/DebtMaster/assets/102996903/e407e33d-15c1-4f49-b8dd-388aad157999)
 
 
-# How Swagger looks
-![DebtMasterPic](https://github.com/LeonitKrasniqi/DebtMaster/assets/102996903/ac8137b3-6fa5-4878-9e9a-1739adb5a1e2)
+# Endpoints Explorer
+![endpoints explorer](https://github.com/LeonitKrasniqi/DebtMaster/assets/102996903/36ff6d37-6527-4b07-b663-cd0668073ed5)
 
 
 ## Role-Based Access Control
